@@ -6,5 +6,29 @@
     <title>Moment</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body></body>
+  <body>
+    <form class="intro_part" aria-label="로그인 화면">
+      <h1>안녕하세요 반갑습니다! <input type="text" placeholder="이름을 입력해 주세요" minlength="1" maxlength="10" /> 님.</h1>
+      <button type="submit">계속하기 ></button>
+    </form>
+    <div class="moment_container" aria-label="메인 페이지의 주요 내용">
+      <header>
+        <button type="button">로그아웃</button>
+        <p>온도</p>
+        <p>도시명</p>
+      </header>
+      <main>
+        <h2 class="a11y_hidden">오늘의 모먼트</h2>
+        <time datetime="">날짜</time>
+        <time datetime="">시계</time>
+        <p>좋은 아침입니다, <span></span> 님.</p>
+        <ul class="todo_list">
+          <li>투두</li>
+        </ul>
+      </main>
+      <footer>
+        <p>랜덤명언</p>
+      </footer>
+    </div>
+  </body>
 </html>
