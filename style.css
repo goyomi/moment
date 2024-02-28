@@ -1,0 +1,95 @@
+/* reset */
+body,
+h1,
+h2,
+p,
+ul,
+button {
+  padding: 0;
+  margin: 0;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+
+input {
+  border: none;
+  vertical-align: baseline;
+}
+
+/* hidden */
+.a11y_hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+
+.hide_display {
+  display: none;
+}
+
+/* layout */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+/* body {
+  기본 bg, font
+} */
+
+.moment_container {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.moment_container .intro_part {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.moment_container > header,
+.moment_container > main,
+.moment_container > footer {
+  display: flex;
+  align-items: center;
+}
+
+.moment_container > main,
+.moment_container > footer {
+  justify-content: center;
+}
+
+.moment_container > header {
+  justify-content: space-between;
+}
+
+.moment_container > main {
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* intro */
