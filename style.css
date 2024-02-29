@@ -2,11 +2,21 @@
 body,
 h1,
 h2,
+h3,
 p,
 ul,
-button {
+button,
+blockquote {
   padding: 0;
   margin: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+blockquote {
+  font: inherit;
 }
 
 ul,
@@ -24,6 +34,7 @@ button {
 input {
   border: none;
   vertical-align: baseline;
+  background: none;
 }
 
 /* hidden */
@@ -42,6 +53,10 @@ input {
   display: none;
 }
 
+.hide_visibility {
+  visibility: hidden;
+}
+
 /* layout */
 * {
   box-sizing: border-box;
@@ -51,9 +66,11 @@ html {
   font-size: 62.5%;
 }
 
-/* body {
-  기본 bg, font
-} */
+body {
+  /* 기본 bg, font */
+  font-size: 2rem;
+  color: aliceblue;
+}
 
 .moment_container {
   padding: 1.5rem;
@@ -90,6 +107,10 @@ html {
 .moment_container > main {
   flex-direction: column;
   flex-grow: 1;
+}
+
+.moment_container > main .todo_form > label {
+  display: block;
 }
 
 /* intro */
