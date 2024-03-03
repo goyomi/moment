@@ -13,6 +13,12 @@ let onEdit = false;
 
 function handleTodoSubmit(event) {
   event.preventDefault();
+
+  if (todos.length >= 5) {
+    alert('할 일 목록은 최대 5개까지만 추가할 수 있습니다.');
+    return;
+  }
+
   const newTodo = todoInput.value;
   todoInput.value = '';
   const newTodoObject = {
@@ -85,6 +91,9 @@ function editTodos() {
     onEdit = true;
     const inputField = document.createElement('input');
     inputField.className = 'edit_input';
+    inputField.required = true;
+    inputField.minLength = '1';
+    inputField.maxLength = '10';
     inputField.type = 'text';
     inputField.value = span.innerText;
     parentLi.replaceChild(inputField, span);
