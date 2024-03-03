@@ -66,19 +66,20 @@ if (getTodos) {
 const getTodoDone = localStorage.getItem(TODO_DONE_KEY);
 numOfDone = getTodoDone ? parseInt(getTodoDone, 10) : 0;
 
-// todo list 삭제, 수정, 완료 버튼
-function deleteTodos(event) {
-  const deleteLi = event.target.parentElement;
-  deleteLi.remove();
-  todos = todos.filter(todo => todo.id !== parseInt(deleteLi.id));
+// 삭제버튼
+function deleteTodos() {
+  const parentLi = document.querySelector('#todoList li');
+  parentLi.remove();
+  todos = todos.filter(todo => todo.id !== parseInt(parentLi.id));
   saveTodos();
   countTodoProgress();
 }
 
-function editTodos(event) {
+// 수정버튼
+function editTodos() {
   const parentLi = document.querySelector('#todoList li');
   const span = parentLi.querySelector('span');
-  const editBtn = parentLi.querySelector('button:nth-child(3)');
+  const editBtn = parentLi.querySelector('button:nth-child(2)');
 
   if (!onEdit) {
     onEdit = true;
@@ -106,6 +107,7 @@ function editTodos(event) {
   }
 }
 
+// 완료버튼
 function doneTodos(event) {
   deleteTodos(event);
   numOfDone++;
