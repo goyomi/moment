@@ -132,7 +132,7 @@ countTodoDone();
 
 // reset
 function resetTodos() {
-  localStorage.clear();
+  localStorage.removeItem(TODOS_KEY);
   todoList.remove();
 
   todos = [];
