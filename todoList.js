@@ -29,6 +29,8 @@ function paintTodos(newTodo) {
   li.id = newTodo.id;
   const span = document.createElement('span');
   span.innerText = newTodo.text;
+  const btns = document.createElement('span');
+  btns.className = 'btns';
   const deleteBtn = document.createElement('button');
   deleteBtn.innerText = '삭제';
   deleteBtn.addEventListener('click', deleteTodos);
@@ -40,9 +42,10 @@ function paintTodos(newTodo) {
   checkBtn.addEventListener('click', doneTodos);
 
   li.appendChild(span);
-  li.appendChild(deleteBtn);
-  li.appendChild(editBtn);
-  li.appendChild(checkBtn);
+  li.appendChild(btns);
+  btns.appendChild(deleteBtn);
+  btns.appendChild(editBtn);
+  btns.appendChild(checkBtn);
   todoList.appendChild(li);
 }
 
@@ -73,17 +76,16 @@ function deleteTodos(event) {
 }
 
 function editTodos(event) {
-  const parentLi = event.target.parentElement;
+  const parentLi = document.querySelector('#todoList li');
   const span = parentLi.querySelector('span');
-  // const inputField = `<input type="text" value="${span.innerText}">`;
   const editBtn = parentLi.querySelector('button:nth-child(3)');
 
   if (!onEdit) {
     onEdit = true;
     const inputField = document.createElement('input');
+    inputField.className = 'edit_input';
     inputField.type = 'text';
     inputField.value = span.innerText;
-
     parentLi.replaceChild(inputField, span);
     editBtn.innerText = '저장';
   } else {
@@ -133,13 +135,14 @@ countTodoDone();
 // reset
 function resetTodos() {
   localStorage.removeItem(TODOS_KEY);
-  todoList.remove();
+  todoList.innerHTML = '';
 
   todos = [];
   numOfDone = 0;
 
   countTodoProgress();
   countTodoDone();
+  handleTodoSubmit();
 }
 
 resetBtn.addEventListener('click', resetTodos);
