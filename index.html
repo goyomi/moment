@@ -9,35 +9,35 @@
   <body>
     <div class="moment_container" aria-label="메인 페이지의 주요 내용">
       <form id="loginForm" class="intro_part" aria-label="로그인 화면">
-        <h1>안녕하세요 반갑습니다! <input type="text" placeholder="이름을 입력해 주세요" minlength="1" maxlength="10" /> 님.</h1>
+        <h1>안녕하세요 반갑습니다! <input type="text" placeholder="이름을 입력해 주세요" minlength="1" maxlength="10" required /> 님.</h1>
         <button type="submit">계속하기 ></button>
       </form>
-      <header>
-        <button type="button">로그아웃</button>
+      <header style="display: none">
+        <button id="logoutBtn" type="button">로그아웃</button>
         <span class="city_weather_data">
           <p id="cityName"></p>
           <p id="weather" class="weather"></p>
           <p id="temperature"></p>
         </span>
       </header>
-      <main>
+      <main style="display: none">
         <h2 class="a11y_hidden">오늘의 모먼트</h2>
-        <time id="days" datetime="">날짜</time>
-        <time id="clock" datetime="">시계</time>
-        <p>좋은 아침입니다, <span id="loginUserName"></span> 님.</p>
+        <time id="days" class="days">날짜</time>
+        <time id="clock" class="clock">시계</time>
+        <p class="greeting_text">좋은 아침입니다, <span id="loginUserName"></span> 님.</p>
         <form id="todoForm" class="todo_form">
           <label for="todoInput">오늘의 할일</label>
-          <input id="todoInput" type="text" placeholder="할일을 입력해 주세요." />
+          <input id="todoInput" type="text" placeholder="할일을 입력해 주세요." minlength="1" maxlength="10" required />
           <button id="todoSaveBtn" type="submit">저장하기</button>
         </form>
-        <div>
+        <div class="todo_status_wrap">
           <span id="todoProgress"></span>
           <span id="todoDone"></span>
           <button id="resetBtn" type="button">모두 삭제</button>
         </div>
         <ul id="todoList" class="todo_list"></ul>
       </main>
-      <footer>
+      <footer style="display: none">
         <blockquote id="wiseSaying"></blockquote>
         <p id="author"></p>
       </footer>
@@ -46,6 +46,7 @@
     <script src="./random.js"></script>
     <script src="./todoList.js"></script>
     <script src="./weather.js"></script>
-    <script src="./logIn.js"></script>
+    <script src="./login.js"></script>
+    <script src="./logout.js"></script>
   </body>
 </html>
