@@ -1,3 +1,5 @@
+@import url(https://db.onlinewebfonts.com/c/84cb021d5f9af287ffff84b61beef6dc?family=clockicons);
+
 /* reset */
 body,
 h1,
@@ -83,6 +85,7 @@ body {
 }
 
 .moment_container .intro_part {
+  max-width: 60rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -108,22 +111,110 @@ body {
 .moment_container > main {
   flex-direction: column;
   flex-grow: 1;
+  gap: 1.5rem;
 }
 
 .moment_container > main .todo_form > label {
   display: block;
+  margin-bottom: 1rem;
 }
 
-/* intro */
+/* common */
+input {
+  border-bottom: 2px solid #fff;
+  color: #fff;
+}
 
-.weather {
+button:hover {
+  color: tomato;
+}
+
+/* login(intro) */
+.intro_part h1,
+.intro_part h1 > input,
+.intro_part h1 > input::placeholder {
+  font-size: 5rem;
+}
+
+.intro_part h1 > input {
+  text-align: right;
+}
+
+.intro_part button {
+  margin-top: 1.5rem;
+  float: right;
+  font-size: 3rem;
+}
+
+/* header */
+header .city_weather_data {
+  display: flex;
+  gap: 1rem;
+}
+
+header .city_weather_data .weather {
   --weather-icon: url("");
 }
 
-.weather::after {
+header .city_weather_data .weather::after {
   content: "";
-  display: block;
-  width: 50px;
-  height: 50px;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
   background: var(--weather-icon) no-repeat center center / contain;
+  vertical-align: middle;
+}
+
+/* main */
+main .days {
+  gap: 0;
+  font-size: 4rem;
+}
+
+main .clock {
+  font-family: clockicons, sans-serif;
+  font-size: 8rem;
+}
+
+main .greeting_text {
+  font-size: 4rem;
+}
+
+main .todo_form,
+main .todo_form > input {
+  font-size: 3rem;
+  text-align: center;
+}
+
+main .todo_status_wrap,
+main .todo_list,
+main .todo_list > li .edit_input {
+  font-size: 3rem;
+}
+
+main .todo_list > li {
+  display: flex;
+  justify-content: space-between;
+}
+
+main .todo_list > li span:first-child,
+main .todo_list > li input {
+  min-width: 30rem;
+  max-width: 30rem;
+  height: 4rem;
+  line-height: 4rem;
+  padding: 0 1rem;
+}
+
+main .todo_list > li .btns > button {
+  margin-right: 1rem;
+}
+
+main .todo_list > li .btns > button:last-child {
+  margin-right: 0;
+}
+
+/* footer */
+footer > blockquote {
+  margin-right: 1rem;
 }
