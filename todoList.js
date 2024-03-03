@@ -82,8 +82,8 @@ function deleteTodos() {
 }
 
 // 수정버튼
-function editTodos() {
-  const parentLi = document.querySelector('#todoList li');
+function editTodos(event) {
+  const parentLi = event.target.closest('li');
   const span = parentLi.querySelector('span');
   const editBtn = parentLi.querySelector('button:nth-child(2)');
 
