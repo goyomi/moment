@@ -98,35 +98,18 @@ function editTodos(event) {
     onEdit = true;
     const inputField = document.createElement('input');
     inputField.className = 'edit_input';
-    inputField.required = true;
     inputField.minLength = '1';
-    inputField.maxLength = '10';
+    inputField.maxLength = '9';
+    inputField.required = true;
     inputField.type = 'text';
     inputField.value = span.innerText;
     parentLi.replaceChild(inputField, span);
     editBtn.innerText = '저장';
+
+    inputField.addEventListener('keydown', (event) => handleEnterKey(event, parentLi, inputField, editBtn));
+    inputField.focus();
   } else {
-    onEdit = false;
-    const inputField = parentLi.querySelector('input');
-    const newText = inputField.value;
-    const newSpan = document.createElement('span');
-
-    newSpan.innerText = newText;
-    parentLi.replaceChild(newSpan, inputField);
-    editBtn.innerText = '수정';
-
-    // 공백제출 막기
-    const trimInputField = inputField.value.trim();
-    if (trimInputField === '') {
-      alert('내용을 한 글자 이상 입력해 주세요.');
-      return;
-    }
-
-    const todoIndex = todos.findIndex(todo => todo.id === parseInt(parentLi.id));
-    if (todoIndex > -1) {
-      todos[todoIndex].text = newText;
-      saveTodos();
-    }
+    saveEditedTodo(parentLi, editBtn);
   }
 }
 
@@ -171,3 +154,35 @@ function resetTodos() {
 }
 
 resetBtn.addEventListener('click', resetTodos);
+
+// 엔터키 처리
+function handleEnterKey(event, parentLi, inputField, editBtn) {
+  if (event.key === 'Enter') {
+    saveEditedTodo(parentLi, editBtn);
+  }
+}
+
+// 투두 수정 후 저장
+function saveEditedTodo(parentLi, editBtn) {
+  onEdit = false;
+  const inputField = parentLi.querySelector('input');
+  const newText = inputField.value;
+  const newSpan = document.createElement('span');
+
+  newSpan.innerText = newText;
+  parentLi.replaceChild(newSpan, inputField);
+  editBtn.innerText = '수정';
+
+  // 공백제출 막기
+  const trimInputField = inputField.value.trim();
+  if (trimInputField === '') {
+    alert('내용을 한 글자 이상 입력해 주세요.');
+    return;
+  }
+
+  const todoIndex = todos.findIndex(todo => todo.id === parseInt(parentLi.id));
+  if (todoIndex > -1) {
+    todos[todoIndex].text = newText;
+    saveTodos();
+  }
+}
