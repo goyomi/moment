@@ -10,6 +10,14 @@ const USER_NAME_KEY = 'userName';
 
 function onLoginSubmit(event) {
   event.preventDefault();
+
+  // 공백제출 막기
+  const trimLoginInput = loginInput.value.trim();
+  if (trimLoginInput === '') {
+    alert('이름을 한 글자 이상 입력해 주세요.');
+    return;
+  }
+
   const userName = loginInput.value;
   localStorage.setItem(USER_NAME_KEY, userName);
   loginForm.classList.add(HIDE_CLASSNAME);

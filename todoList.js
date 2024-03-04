@@ -19,6 +19,13 @@ function handleTodoSubmit(event) {
     return;
   }
 
+  // 공백제출 막기
+  const trimTodoInput = todoInput.value.trim();
+  if (trimTodoInput === '') {
+    alert('내용을 한 글자 이상 입력해 주세요.');
+    return;
+  }
+
   const newTodo = todoInput.value;
   todoInput.value = '';
   const newTodoObject = {
@@ -107,6 +114,13 @@ function editTodos(event) {
     newSpan.innerText = newText;
     parentLi.replaceChild(newSpan, inputField);
     editBtn.innerText = '수정';
+
+    // 공백제출 막기
+    const trimInputField = inputField.value.trim();
+    if (trimInputField === '') {
+      alert('내용을 한 글자 이상 입력해 주세요.');
+      return;
+    }
 
     const todoIndex = todos.findIndex(todo => todo.id === parseInt(parentLi.id));
     if (todoIndex > -1) {
