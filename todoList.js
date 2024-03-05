@@ -9,8 +9,6 @@ const TODO_DONE_KEY = 'todoDone';
 let todos = [];
 let numOfDone = 0;
 
-let onEdit = false;
-
 function handleTodoSubmit(event) {
   event.preventDefault();
 
@@ -93,13 +91,13 @@ function editTodos(event) {
   const parentLi = event.target.closest('li');
   const span = parentLi.querySelector('span');
   const editBtn = parentLi.querySelector('button:nth-child(2)');
+  parentLi.classList.toggle('onEdit');
 
-  if (!onEdit) {
-    onEdit = true;
+  if (parentLi.classList.contains('onEdit')) {
     const inputField = document.createElement('input');
     inputField.className = 'edit_input';
     inputField.minLength = '1';
-    inputField.maxLength = '9';
+    inputField.maxLength = '10';
     inputField.required = true;
     inputField.type = 'text';
     inputField.value = span.innerText;
@@ -164,7 +162,6 @@ function handleEnterKey(event, parentLi, inputField, editBtn) {
 
 // 투두 수정 후 저장
 function saveEditedTodo(parentLi, editBtn) {
-  onEdit = false;
   const inputField = parentLi.querySelector('input');
   const newText = inputField.value;
   const newSpan = document.createElement('span');
