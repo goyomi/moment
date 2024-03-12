@@ -1,4 +1,29 @@
-@import url(https://db.onlinewebfonts.com/c/84cb021d5f9af287ffff84b61beef6dc?family=clockicons);
+/* font */
+@font-face {
+  font-family: "clockicons";
+  src: url("https://db.onlinewebfonts.com/t/84cb021d5f9af287ffff84b61beef6dc.eot");
+  src: url("https://db.onlinewebfonts.com/t/84cb021d5f9af287ffff84b61beef6dc.eot?#iefix") format("embedded-opentype"), url("https://db.onlinewebfonts.com/t/84cb021d5f9af287ffff84b61beef6dc.woff") format("woff"),
+    url("https://db.onlinewebfonts.com/t/84cb021d5f9af287ffff84b61beef6dc.woff2") format("woff2"), url("https://db.onlinewebfonts.com/t/84cb021d5f9af287ffff84b61beef6dc.ttf") format("truetype"), url("https://db.onlinewebfonts.com/t/84cb021d5f9af287ffff84b61beef6dc.svg#clockicons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF_HambakSnow";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* root */
 
 /* reset */
 body,
@@ -70,7 +95,8 @@ html {
 }
 
 body {
-  /* 기본 bg, font */
+  /* background-color: rgb(239, 238, 233); */
+  font-family: "Pretendard-Regular";
   font-size: 2rem;
   color: aliceblue;
 }
@@ -86,6 +112,7 @@ body {
 
 .moment_container .intro_part {
   max-width: 60rem;
+  padding: 0 1rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -130,14 +157,21 @@ button:hover {
 }
 
 /* login(intro) */
-.intro_part h1,
-.intro_part h1 > input,
-.intro_part h1 > input::placeholder {
+.intro_part h2,
+.intro_part h2 > input {
   font-size: 5rem;
 }
 
-.intro_part h1 > input {
-  text-align: right;
+.intro_part h2 > input::placeholder {
+  font-size: 4.5rem;
+}
+
+.intro_part h2 > input {
+  max-width: 45rem;
+  text-align: center;
+  height: 5rem;
+  line-height: 5rem;
+  padding: 0 1rem;
 }
 
 .intro_part button {
@@ -172,12 +206,13 @@ main .days {
 }
 
 main .clock {
-  font-family: clockicons, sans-serif;
+  font-family: clockicons;
   font-size: 8rem;
 }
 
-main .greeting_text {
-  font-size: 4rem;
+main .greeting_text > p {
+  display: inline;
+  font-size: 3rem;
 }
 
 main .todo_form,
@@ -199,8 +234,8 @@ main .todo_list > li {
 
 main .todo_list > li span:first-child,
 main .todo_list > li input {
-  min-width: 30rem;
-  max-width: 30rem;
+  min-width: 32rem;
+  max-width: 32rem;
   height: 4rem;
   line-height: 4rem;
   padding: 0 1rem;
